@@ -1,23 +1,36 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-
-public class FileExtensionAnalyzerTest {
+class FileExtensionAnalyzerTest{
     @Test
-   public void testIfFileNameEndsWithDoc()
-    {
-        FileExtensionAnalyzer fEA = new FileExtensionAnalyzer();
-        boolean actual = true;
-        actual = fEA.IsValidFileName("Dunsin.DOC");
-        boolean expected = false;
-        assertEquals(false, fEA.IsValidFileName("Dunsin.Doc"));
+    public void isValidFileName(){
+        FileExtensionAnalyzer extensionAnalyzer = new FileExtensionAnalyzer();
+
+        //ARRANGE
+        String fileName = "Dunsin.DOC";
+        Boolean actual ;
+
+        //ACT
+        actual = extensionAnalyzer.IsValidFileName(fileName);
+
+        //ASSERT
+        assertEquals(false, actual);
+
     }
 
-    private void assertEquals(boolean b, boolean isValidFileName) {
-    }
+    @Test
+    public void isNotValidFileName(){
+        FileExtensionAnalyzer extensionAnalyzer = new FileExtensionAnalyzer();
+
+        //ARRANGE
+        String fileName = "Dunsin.ppt";
+        Boolean actual ;
+
+        //ACT
+        actual = extensionAnalyzer.IsValidFileName(fileName);
+
+        //ASSERT
+        assertEquals(true, actual);
 
     }
-
-
-
-
+}
